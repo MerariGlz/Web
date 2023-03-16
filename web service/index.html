@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mi servicio web</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>Mi servicio web</h1>
+  <form>
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" id="nombre">
+    <br>
+    <button type="button" onclick="saludar()">Saludar</button>
+  </form>
+  <div id="respuesta"></div>
+  <script>
+    function saludar() {
+      var nombre = $('#nombre').val();
+      $.post('mi_servicio.php', { accion: 'saludar', nombre: nombre }, function(respuesta) {
+        $('#respuesta').html(respuesta);
+      }, 'json');
+    }
+  </script>
+</body>
+</html>
